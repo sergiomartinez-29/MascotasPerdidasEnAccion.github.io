@@ -1,0 +1,196 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    padding: 20px;
+}
+
+.header-eslogan {
+    background-color: #ffe797;
+    color: black;
+    font-weight: normal;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    position: relative;
+    height: 200px;
+    text-align: center;
+}
+
+.perro-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 250px;
+    width: 590px;
+}
+
+h2{
+    margin-left: 75px;
+
+}
+
+
+.orange-box {
+    background-color: orange; 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: black;
+}
+
+.header-text h1 {
+    font-size: 20px;
+    margin-right: 300px;
+
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-left: 60px;
+}
+
+.sesion-usuario {
+    color: #000;
+    border: none;
+    border-radius: 18px;
+    padding: 5px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #000;
+    background-color: white;
+}
+
+.sesion-usuario i {
+    margin-right: 10px; 
+}
+
+.p{
+    margin-right: 30px;
+    font-weight: bold;
+}
+
+.pet-card {
+    border: 5px solid #4da5d2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    border-radius: 30px;
+    margin: 10px;
+    width: 330px;
+    height: 470px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 80px;
+    margin-bottom: 60px;
+}
+
+.pet-date1 {
+    padding: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+.qualities-list1 {
+    margin-left: 19px; 
+    list-style-type: disc; 
+    font-size: 16px; 
+    color: #333; 
+    padding-left: 15px; 
+    margin-top: -30px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 50px;
+}
+
+.button {
+    background-color:  #ff7b00; 
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 60px;
+    margin: 5px;
+    cursor: pointer;
+    margin-left: 280px;
+    margin-bottom: 30px;
+}
+
+.pet-image1 img {
+    width: 290px;
+    height: 180px;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: -25px;
+    margin-left: 15px;
+}
+
+.pet-details1 {
+    padding: 10px;
+}
+h3 {
+    font-size: 16px; 
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    font-size: 12px; 
+    margin: 0;
+    padding: 0;
+}
+
+.popup-container {
+    display: flex;
+}
+
+.mas-info {
+    background-color: #F5B041; 
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 100px;
+    margin-top: 20px;
+    width: 120px;
+    height: 50px;
+}
+
+
+
+.user-info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+

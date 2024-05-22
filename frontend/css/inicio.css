@@ -1,0 +1,332 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    padding: 20px;
+}
+
+.header-eslogan {
+    background-color: #ffe797;
+    color: black;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    position: relative; 
+}
+
+.perro-header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 119px;
+    width: 520px;
+}
+
+h2{
+    margin-left: 35px;
+
+}
+
+
+.orange-box {
+    background-color: orange; 
+    width: 30px; 
+    height: 30px; 
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: black;
+}
+
+.header-text h1 {
+    font-size: 20px;
+    margin-right: 300px;
+
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-left: 60px;
+}
+
+.sesion-usuario {
+    color: #000;
+    border: none;
+    border-radius: 18px;
+    padding: 5px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #000;
+    background-color: white;
+}
+
+.sesion-usuario i {
+    margin-right: 10px; 
+}
+
+.p{
+    margin-right: 30px;
+    font-weight: bold;
+}
+
+.pet-card {
+    border: 1px solid black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    margin: 10px;
+    width: 280px;
+    height: 450px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 40px;
+    margin-bottom: 50px;
+}
+
+.pet-date1 {
+    padding: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+.qualities-list1 {
+    margin-left: 19px; 
+    list-style-type: disc; 
+    font-size: 16px; 
+    color: #333; 
+    padding-left: 15px; 
+    margin-top: -30px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 50px;
+}
+
+.button {
+    background-color:  #ff7b00; 
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 60px;
+    margin: 5px;
+    cursor: pointer;
+    margin-left: 250px;
+    margin-bottom: 30px;
+}
+
+.pet-image1 img {
+    width: 230px;
+    height: 180px;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: -25px;
+    margin-left: 15px;
+}
+
+.pet-details1 {
+    padding: 10px;
+}
+h3 {
+    font-size: 16px; 
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    font-size: 12px; 
+    margin: 0;
+    padding: 0;
+}
+
+.popup-container {
+    display: flex;
+}
+
+.mas-info {
+    background-color: #4da5d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 165px;
+    margin-top: -20px;
+}
+
+
+
+.user-info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #ffffb5;
+    color: black;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.section {
+
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 25px;
+    margin-left: 70px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+#chatbot-container {
+    position: relative;
+  }
+  
+  #chatbot {
+    background-color: orange;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 59px;
+    font-size: 57px;
+    margin-bottom: 20px;
+    margin-top: -40px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+
+
+  }
+  
+  .chat-container {
+    max-width: 450px;
+    width: 100%;
+    border: 2px solid #ccc;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+    position: absolute;
+    bottom: 50px; 
+    right: 43px;
+    background-color: #E1F5FE ;
+
+  }
+  
+  #chat-display {
+    height: 300px;
+    padding: 10px;
+    overflow-y: scroll;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ccc;
+    height: 30px;
+  }
+  
+  #enviar {
+    width: 35%;
+    padding: 10px;
+    border: none;
+    background-color: orange;
+    color: black;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 292px;
+  }
+  
+  .user-message, .chatbot-message {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    max-width: 90%;
+    word-wrap: break-word;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .chatbot-message button {
+    background-color: white;
+    color: black;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+
+
+
+  .user-message{
+    display: flex;
+  align-items: center;
+  justify-content: end;
+  margin: 5px 0;
+  max-width: 70%;
+  word-wrap: break-word;
+  margin-right: 10px;
+  }
+  
+  .user-message .icon, .chatbot-message .icon {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  .user-message span, .chatbot-message span {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  

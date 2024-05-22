@@ -1,0 +1,22 @@
+.pet-card{
+    background-color: white;
+}
+
+.contenedor{
+    background-color: #ffffbb;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buscador h2{
+    display: inline-block;
+    margin-right: 505px;
+    margin-bottom: 30px;
+}
+
+.campo-buscador{
+    width: 480px;
+    height: 50px ;
+    border-radius: 20px;
+
+}
