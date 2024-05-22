@@ -1,3 +1,6 @@
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+
 function loguear() {
   let user = document.getElementById("correo").value;
   let pass = document.getElementById("contrasena").value;
