@@ -11,33 +11,46 @@ header {
     align-items: center;
     color: black;
     padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .header-eslogan {
     background-color: #ffff8e;
     color: black;
     padding: 25px;
+    text-align: center;
 }
 
 h2 {
     margin: 0;
 }
 
-img {
-    margin: 15px auto; 
-    border-radius: 60px; 
-    height: 410px;
+.info-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 50px;
+    background-color: #f7f7a6;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.info-container img {
+    border-radius: 10px;
+    margin-right: 50px;
+    height: 400px;
     width: 350px;
-    margin-top: 30px;
-    margin-left: 20px;
+    object-fit: cover;
 }
 
 .info {
-    margin: 0;
-    font-size: 16px;
-    margin-bottom: 10px;
-    margin-left: 350px;
-    margin-top: -430px;
+    max-width: 400px;
+}
+
+.info p, .info h4 {
+    margin: 10px 0;
 }
 
 .perro-header {
@@ -46,11 +59,6 @@ img {
     right: 0;
     height: 119px;
     width: 520px;
-}
-
-h2{
-    margin-left: 35px;
-
 }
 
 .orange-box {
@@ -68,7 +76,6 @@ h2{
 .header-text h1 {
     font-size: 20px;
     margin-right: 300px;
-
 }
 
 nav ul {
@@ -104,7 +111,7 @@ nav ul li a {
     margin-right: 10px; 
 }
 
-.p{
+.p {
     margin-right: 30px;
     font-weight: bold;
 }
@@ -115,8 +122,6 @@ nav ul li a {
     padding: 50px;
     display: flex;
     flex-direction: column;
-    
-
 }
 
 form {
@@ -135,4 +140,3 @@ textarea {
     border: 1px solid black;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
 }
-

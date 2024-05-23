@@ -45,10 +45,19 @@ function displayAnimals(animals) {
             <p>Color: ${animal.color}</p>
             <p>Tamaño: ${animal.size}</p>
             <p class="recompensa">Recompensa: $${animal.reward.toFixed(2)}</p>
-            <button class="ver-mas-btn">Ver más</button>
+            <button class="ver-mas-btn" data-id="${animal.id}">Ver más</button>
         `;
 
         container.appendChild(card);
+    });
+
+    // Add event listeners to the buttons
+    const buttons = document.querySelectorAll('.ver-mas-btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const animalId = button.getAttribute('data-id');
+            window.location.href = `info_adicional1.html?id=${animalId}`;
+        });
     });
 }
 
