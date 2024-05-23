@@ -11,8 +11,8 @@
     <!-- Agrega esto en la sección head de tu HTML -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js"></script>
+    
 </head>
 <body>
     
@@ -42,22 +42,22 @@
     </header>
 
     <div id="app">
-        <p style="font-size: 23px; font-weight: bold; margin-left: 210px; ">Comentarios y/o recomendaciones</p>
-    <br>
-        <div id="comment-form">
+        <p style="font-size: 23px; font-weight: bold; margin-left: 210px;">Comentarios y/o recomendaciones</p>
+        <br>
+        <form id="comment-form">
             <textarea id="comment-input" placeholder="Escribe un comentario"></textarea>
-            <button onclick="addComment()">Enviar</button>
-        </div>
+            <button type="submit">Enviar</button>
+        </form>
         <div id="comments-container"></div>
     </div>
+    <!--div style="position:static;" id="ad-banner">
 
-    <div style="position:static;" id="ad-banner">
         <img src="../imagenes/adopcion2.png" alt="Banner de publicidad">
         <p style="font-size: 20px; margin-left: 10px; margin-right: 10px; color: black;">Un animalito rehabilitado necesita de un espacio, ambiente y cuidados especiales. Debe tratarse como a un nuevo integrante de la familia.</p>
         <br><br>
         <p style="font-size: 20px; color: black;"><i style="color: blue; font-size: 20px;" class="fa-brands fa-facebook"></i> ADOPTA MONTERREY</p>
         <p style="font-size: 20px; color: black;"><i style="color: rgb(194, 71, 194); font-size: 20px" class="fa-brands fa-instagram"></i> @adopta_monterrey</p>
-    </div>
+    </div-->
     <br><br>
 
     <script src="../../backend/foro.js"></script>

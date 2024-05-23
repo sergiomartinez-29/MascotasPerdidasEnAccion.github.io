@@ -1,6 +1,10 @@
-let comments = [];
+const SUPABASE_URL = 'https://shxefkrehmfropbodffn.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNoeGVma3JlaG1mcm9wYm9kZmZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY0MTEzNjMsImV4cCI6MjAzMTk4NzM2M30.Lh9a-T6_mPm52FMUszNM1jROfBhRO2wXX6xpNkrto6Y';
+const SUPABASE_TABLE = 'comments';
 
-function addComment() {
+document.getElementById('comment-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
     const commentInput = document.getElementById('comment-input');
     const commentText = commentInput.value.trim();
 
@@ -8,74 +12,96 @@ function addComment() {
         const comment = {
             text: commentText,
             likes: 0,
-            replies: [],
-            timestamp: new Date().toLocaleString(),
+            timestamp: new Date().toISOString(),
         };
 
-        comments.push(comment);
-        renderComments();
-        commentInput.value = '';
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            },
+            body: JSON.stringify(comment)
+        });
+
+        if (response.ok) {
+            alert('Comentario registrado exitosamente!');
+            commentInput.value = '';
+            fetchComments(); // Actualiza la lista de comentarios después de registrar uno nuevo
+        } else {
+            alert('Error al registrar el comentario.');
+            console.error('Error:', await response.json());
+        }
+    }
+});
+
+async function fetchComments() {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?select=*`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+        }
+    });
+
+    if (response.ok) {
+        const comments = await response.json();
+        const commentsContainer = document.getElementById('comments-container');
+        commentsContainer.innerHTML = ''; // Limpia la lista antes de actualizar
+
+        comments.forEach(comment => {
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+
+            const commentText = document.createElement('p');
+            commentText.textContent = comment.text;
+
+            const commentTimestamp = document.createElement('span');
+            commentTimestamp.classList.add('timestamp');
+            commentTimestamp.textContent = new Date(comment.timestamp).toLocaleString();
+
+            const commentActions = document.createElement('div');
+            commentActions.classList.add('comment-actions');
+
+            const likeBtn = document.createElement('span');
+            likeBtn.classList.add('like-btn');
+            likeBtn.textContent = `👍 ${comment.likes}`;
+            likeBtn.onclick = () => likeComment(comment.id, comment.likes);
+
+            commentActions.appendChild(likeBtn);
+
+            commentDiv.appendChild(commentText);
+            commentDiv.appendChild(commentTimestamp);
+            commentDiv.appendChild(commentActions);
+
+            commentsContainer.appendChild(commentDiv);
+        });
+    } else {
+        console.error('Error al obtener los comentarios:', await response.json());
     }
 }
 
-function renderComments() {
-    const commentsContainer = document.getElementById('comments-container');
-    commentsContainer.innerHTML = '';
+async function likeComment(commentId, currentLikes) {
+    const updatedLikes = currentLikes + 1;
 
-    comments.forEach((comment, index) => {
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
-
-        const commentText = document.createElement('p');
-        commentText.textContent = comment.text;
-
-        const commentTimestamp = document.createElement('span');
-        commentTimestamp.classList.add('timestamp');
-        commentTimestamp.textContent = comment.timestamp;
-
-        const commentActions = document.createElement('div');
-        commentActions.classList.add('comment-actions');
-
-        const likeBtn = document.createElement('span');
-        likeBtn.classList.add('like-btn');
-        likeBtn.textContent = `👍 ${comment.likes}`;
-        likeBtn.onclick = () => likeComment(index);
-
-        commentActions.appendChild(likeBtn);
-
-        commentDiv.appendChild(commentText);
-        commentDiv.appendChild(commentTimestamp);
-        commentDiv.appendChild(commentActions);
-
-        commentsContainer.appendChild(commentDiv);
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?id=eq.${commentId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+        },
+        body: JSON.stringify({ likes: updatedLikes })
     });
+
+    if (response.ok) {
+        fetchComments(); // Actualiza la lista de comentarios después de actualizar los likes
+    } else {
+        console.error('Error al actualizar likes:', await response.json());
+    }
 }
 
-function likeComment(index) {
-    comments[index].likes++;
-    renderComments();
-}
-
-comments = [
-    {
-        text: '¡Encontré a mi mascota!',
-        likes: 12,
-        replies: [],
-        timestamp: '2023-11-12 12:00 PM',
-    },
-    {
-        text: 'La página me ayudó mucho.',
-        likes: 4,
-        replies: [],
-        timestamp: '2023-11-02 2:00 PM',
-    },
-    {
-        text: 'Más como estas páginas.',
-        likes: 4,
-        replies: [],
-        timestamp: '2023-10-21 5:02 PM',
-    },
-    
-];
-
-renderComments();
+// Llama a fetchComments al cargar la página para mostrar los comentarios existentes
+document.addEventListener('DOMContentLoaded', fetchComments);
