@@ -41,54 +41,49 @@
         <br>
         <h2 style="margin-top: 10px;">Intenta completar todos los campos de información, esto con el fin de que sea más fácil para los demas el identificar a tu mascota</h2>
         <div>
-            <form id="lostanimal">
+            <form id="pet-form">
                 <div>
                     <div class="nombre">
-                        <label style="margin-left: 50px;" for="nombre">Nombre</label>
-                        <input style="margin-left: 40px; padding: 15px 45px 5px; width: 360px;" type="text" id="nombree" name="nombree" required>
+                        <label style="margin-left: 50px;" for="name">Nombre</label>
+                        <input style="margin-left: 40px; padding: 15px 45px 5px; width: 360px;" type="text" id="name" name="name" required>
                     </div>
                     <div class="especie">
-                        <label style="margin-left: 35px;" for="especie">Especie</label>
-                        <input style="margin-left: 30px; padding: 15px 45px 5px; width: 350px;" type="text" id="especie" name="especie" required>
+                        <label style="margin-left: 35px;" for="species">Especie</label>
+                        <input style="margin-left: 30px; padding: 15px 45px 5px; width: 350px;" type="text" id="species" name="species" required>
                     </div>
                 </div>
 
                 <div>
                     <div class="foto">
-                        <label style="margin-left: 50px;" for="foto">Fotografía</label>
-                        <input type="file" id="fileInput" style="display: none">
-                        <button class="subir" type="button" id="uploadButton">Subir
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green" id="checkmark" style="display: none">
-                                <path d="M9 16.17l-3.59-3.58L4 13l5 5 10-10-1.41-1.42L9 16.17z"/>
-                            </svg>
-                        </button>
+                        <label style="margin-left: 50px;" for="photo">Fotografía (url)</label>
+                        <input type="text" id="photo" name="photo" required><br><br>
                     </div>
 
                     <div class="fecha">
-                        <label style="margin-left: 50px; margin-bottom: 10px;" for="fecha">Fecha de extravío</label>
-                        <input style="margin-left: 40px; padding: 15px 0px 5px; width: 255px;" type="date" id="fecha" name="fecha" required>
+                        <label style="margin-left: 50px; margin-bottom: 10px;" for="lostdate">Fecha de extravío</label>
+                        <input style="margin-left: 40px; padding: 15px 0px 5px; width: 255px;" type="text" id="lostdate" name="lostdate" required>
                     </div>
 
                     <div class="fecha">
-                        <label style="margin-left: 290px;" for="raza">Raza</label>
-                        <input style="margin-left: 280px; padding: 15px 0px 5px;" type="text" id="raza" name="raza" required>
+                        <label style="margin-left: 290px;" for="race">Raza</label>
+                        <input style="margin-left: 280px; padding: 15px 0px 5px;" type="text" id="race" name="race" required>
                     </div>
 
                     <div class="fecha">
-                        <label style="margin-left: 40px;" for="tamano">Tamaño</label>
-                        <input style="margin-left: 40px; padding: 15px 0px 5px;" type="text" id="tamano" name="tamano" required>
+                        <label style="margin-left: 40px;" for="size">Tamaño</label>
+                        <input style="margin-left: 40px; padding: 15px 0px 5px;" type="text" id="size" name="size" required>
                     </div>
                 </div>
 
                 <div>
                     <div class="recompensa">
-                        <label style="margin-left: 40px; margin-top: 20px;" for="recompensa">Recompensa</label>
-                        <input style="margin-left: 40px; padding: 15px 0px 5px;" type="text" id="recompensa" name="recompensa" placeholder="    $">
+                        <label style="margin-left: 40px; margin-top: 20px;" for="reward">Recompensa</label>
+                        <input style="margin-left: 40px; padding: 15px 0px 5px;" type="text" id="reward" name="reward" required>
                     </div>
 
                     <div class="fecha">
-                        <label style="margin-left: 290px;" for="temperamento">Temperamento</label>
-                        <input style="margin-left: 280px; padding: 15px 0px 5px;" type="text" id="temperamento" name="temperamento" required>
+                        <label style="margin-left: 290px;" for="temper">Temperamento</label>
+                        <input style="margin-left: 280px; padding: 15px 0px 5px;" type="text" id="temper" name="temper" required>
                     </div>
 
                     <div class="fecha">
@@ -98,9 +93,10 @@
                 </div>
 
                 <div class="continuar">
-                    <button type="submit" onclick="registrarMascota(event)">Guardar</button>
+                    <button type="submit">Registrar</button>
                 </div>
             </form>
+            <script src="/backend/perdimascota.js"></script>
         </div>
     </div>
 
@@ -136,26 +132,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        const fileInput = document.getElementById('fileInput');
-        const uploadButton = document.getElementById('uploadButton');
-        const checkmark = document.getElementById('checkmark');
-        
-        uploadButton.addEventListener('click', () => {
-            fileInput.click();
-        });
-        
-        fileInput.addEventListener('change', () => {
-            checkmark.style.display = 'none';
-            const selectedFile = fileInput.files[0];
-            
-            if (selectedFile) {
-                console.log('Nombre del archivo seleccionado:', selectedFile.name);
-                console.log('Tamaño del archivo:', selectedFile.size, 'bytes');
-                checkmark.style.display = 'block';
-            }
-        });
-    </script>
 </body>
 </html>
