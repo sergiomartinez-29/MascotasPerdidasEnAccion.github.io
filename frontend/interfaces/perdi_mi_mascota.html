@@ -11,6 +11,79 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js"></script>
     <script src="/backend/perdimascota.js"></script>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #deba44;
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: white;
+        }
+
+        header .orange-box {
+            background-color: white;
+            padding: 10px;
+            border-radius: 50%;
+            color: #ff6f61;
+        }
+
+        header .header-text {
+            display: flex;
+            align-items: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header .sesion-usuario {
+            background-color: white;
+            color: #ff6f61;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .header-formulario {
+            background-color: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .header-formulario h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
         .form-container {
             display: flex;
             flex-wrap: wrap;
@@ -19,22 +92,73 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .form-group {
             flex: 1 1 300px;
             display: flex;
             flex-direction: column;
             margin-bottom: 20px;
         }
+
         .form-group label {
             margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
         }
+
         .form-group input {
             padding: 15px;
-            width: 80%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
         }
+
         .continuar {
             text-align: center;
             margin-top: 20px;
+        }
+
+        .continuar button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer .section {
+            margin-bottom: 40px;
+        }
+
+        footer h2 {
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            margin: 0 0 20px;
+            font-size: 18px;
+        }
+
+        footer .social-icons a {
+            margin: 0 10px;
+            color: white;
+            font-size: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .form-group {
+                flex: 1 1 100%;
+            }
         }
     </style>
 </head>
