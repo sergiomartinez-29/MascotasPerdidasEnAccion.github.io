@@ -10,6 +10,33 @@
     <script src="https://kit.fontawesome.com/f231ffcfa5.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js"></script>
     <script src="/backend/perdimascota.js"></script>
+    <style>
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .form-group {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            margin-bottom: 10px;
+        }
+        .form-group input {
+            padding: 15px;
+            width: 80%;
+        }
+        .continuar {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     
@@ -39,59 +66,47 @@
 
     <div class="header-formulario">
         <br>
-        <h2 style="margin-top: 10px;">Intenta completar todos los campos de información, esto con el fin de que sea más fácil para los demas el identificar a tu mascota</h2>
+        <h2 style="margin-top: 10px;">Intenta completar todos los campos de información, esto con el fin de que sea más fácil para los demás el identificar a tu mascota</h2>
         <div>
             <form id="pet-form">
-                <div>
-                    <div class="nombre">
-                        <label style="margin-left: 50px;" for="name">Nombre</label>
-                        <input style="margin-left: 40px; padding: 15px 45px 5px; width: 360px;" type="text" id="name" name="name" required>
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-                    <div class="especie">
-                        <label style="margin-left: 35px;" for="species">Especie</label>
-                        <input style="margin-left: 30px; padding: 15px 45px 5px; width: 350px;" type="text" id="species" name="species" required>
+                    <div class="form-group">
+                        <label for="species">Especie</label>
+                        <input type="text" id="species" name="species" required>
                     </div>
-                </div>
-
-                <div>
-                    <div class="foto">
-                        <label style="margin-left: 50px;" for="photo">Fotografía (url)</label>
-                        <input type="text" id="photo" name="photo" required><br><br>
+                    <div class="form-group">
+                        <label for="photo">Fotografía (url)</label>
+                        <input type="text" id="photo" name="photo" required>
                     </div>
-
-                    <div class="fecha">
-                        <label style="margin-left: 50px; margin-bottom: 10px;" for="lostdate">Fecha de extravío</label>
-                        <input style="margin-left: 40px; padding: 15px 0px 5px; width: 255px;" type="text" id="lostdate" name="lostdate" required>
+                    <div class="form-group">
+                        <label for="lostdate">Fecha de extravío</label>
+                        <input type="text" id="lostdate" name="lostdate" required>
                     </div>
-
-                    <div class="fecha">
-                        <label style="margin-left: 290px;" for="race">Raza</label>
-                        <input style="margin-left: 280px; padding: 15px 0px 5px;" type="text" id="race" name="race" required>
+                    <div class="form-group">
+                        <label for="race">Raza</label>
+                        <input type="text" id="race" name="race" required>
                     </div>
-
-                    <div class="fecha">
-                        <label style="margin-left: 40px;" for="size">Tamaño</label>
-                        <input style="margin-left: 40px; padding: 15px 0px 5px;" type="text" id="size" name="size" required>
+                    <div class="form-group">
+                        <label for="size">Tamaño</label>
+                        <input type="text" id="size" name="size" required>
                     </div>
-                </div>
-
-                <div>
-                    <div class="recompensa">
-                        <label style="margin-left: 40px; margin-top: 20px;" for="reward">Recompensa</label>
-                        <input style="margin-left: 40px; padding: 15px 0px 5px;" type="text" id="reward" name="reward" required>
+                    <div class="form-group">
+                        <label for="reward">Recompensa</label>
+                        <input type="text" id="reward" name="reward" required>
                     </div>
-
-                    <div class="fecha">
-                        <label style="margin-left: 290px;" for="temper">Temperamento</label>
-                        <input style="margin-left: 280px; padding: 15px 0px 5px;" type="text" id="temper" name="temper" required>
+                    <div class="form-group">
+                        <label for="temper">Temperamento</label>
+                        <input type="text" id="temper" name="temper" required>
                     </div>
-
-                    <div class="fecha">
-                        <label style="margin-left: 40px;" for="color">Color</label>
-                        <input style="margin-left: 40px; padding: 15px 0px 5px;" type="text" id="color" name="color" required>
+                    <div class="form-group">
+                        <label for="color">Color</label>
+                        <input type="text" id="color" name="color" required>
                     </div>
                 </div>
-
                 <div class="continuar">
                     <button type="submit">Registrar</button>
                 </div>
