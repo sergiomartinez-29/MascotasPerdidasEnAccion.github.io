@@ -11,6 +11,7 @@ async function fetchAnimals() {
         const { data, error } = await supabaseClient
             .from('animals')
             .select('*')
+            .order('id', { ascending: false })
             .limit(4);
 
         if (error) throw error;

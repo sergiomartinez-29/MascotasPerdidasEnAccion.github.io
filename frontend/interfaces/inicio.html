@@ -7,7 +7,84 @@
 
     <link rel="stylesheet" href="../css/inicio.css">
     <script src="https://kit.fontawesome.com/f231ffcfa5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js"></script>
+    <style>
+        .animal-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
 
+        .animal-card {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            width: 300px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+            margin: 20px;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .animal-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .animal-card h3 {
+            margin: 20px 0 10px;
+            font-size: 1.75em;
+            color: #333;
+        }
+
+        .animal-card p {
+            margin: 10px 0;
+            color: #666;
+            font-size: 1em;
+        }
+
+        .recompensa {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1.2em;
+        }
+
+        .ver-mas-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            margin: 20px 0;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .ver-mas-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .email-display {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
     
@@ -20,18 +97,17 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#" onclick="window.location.href='inicio.html.'; return false;">Inicio</a></li>
+                <li><a href="#" onclick="window.location.href='inicio.html'; return false;">Inicio</a></li>
                 <li><a href="#" onclick="window.location.href='perdi_mi_mascota.html'; return false;">Perdí a mi mascota</a></li>
                 <li><a href="#" onclick="window.location.href='mascotas_desaparecidas.html'; return false;">Mascotas desaparecidas</a></li>
                 <li><a href="#" onclick="window.location.href='refugios.html'; return false;">Refugios</a></li>
                 <li>
                     <a href="#">
                         <button class="sesion-usuario" type="button">
-                            <i class="fas fa-user"></i> Linet
+                            <i class="fas fa-user"></i> <span id="user-email">Linet</span>
                         </button>
                     </a>
                 </li>
-                
             </ul>
         </nav>
     </header>
@@ -43,108 +119,13 @@
     <br>
 
     <h2>Ayúdanos a encontrarlos</h2>
+    
+    <div id="animal-container" class="animal-container"></div>
 
+    <script src="/backend/iniciomascotas.js"></script>
 
-    <div class="pet-card">
-        <div class="pet-date1">
-            <h5>Perdido desde: 21/10/2023</h5>
-        </div>
-        <div class="pet-image1">
-            <img src="../imagenes/canala.jpg" alt="Mascota perdida 2">
-        </div>
-        <div class="pet-details1">
-            <h3 style="margin-left: 19px; font-size: 20px;">Canala</h3>
-            <i class="fa-solid fa-cat" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-            <ul class="qualities-list1">
-                <li>Gato americano</li>
-                <li>Pelaje atigrado</li>
-            </ul>
-            <div>
-                <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-            </div>
-            <div class="popup-container">
-                <a href="../interfaces/info_adicional1.html">
-                    <button class="mas-info">Ver más</button>
-                </a>
-            </div>        
-        </div>
-    </div>
-
-    <div class="pet-card">
-        <div class="pet-date1">
-            <h5>Perdido desde: 25/10/2023</h5>
-        </div>
-        <div class="pet-image1">
-            <img src="../imagenes/hulk.jpg" alt="Mascota perdida 2">
-        </div>
-        <div class="pet-details1">
-            <h3 style="margin-left: 19px; font-size: 20px;">Hulk</h3>
-            <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-            <ul class="qualities-list1">
-                <li>Color beige</li>
-                <li>Patas blancas</li>
-            </ul>
-            <div>
-                <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-            </div>
-            <div class="popup-container">
-                <a href="../interfaces/info_adicional2.html">
-                    <button class="mas-info">Ver más</button>
-                </a>
-            </div>       
-        </div>
-    </div>
-
-    <div class="pet-card">
-        <div class="pet-date1">
-            <h5>Perdido desde: 16/08/2023</h5>
-        </div>
-        <div class="pet-image1">
-            <img src="../imagenes/bichy.jpg" alt="Mascota perdida 2">
-        </div>
-        <div class="pet-details1">
-            <h3 style="margin-left: 19px; font-size: 20px;">Bichy</h3>
-            <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-            <ul class="qualities-list1">
-                <li>Pequeño</li>
-                <li>Chihuahua</li>
-            </ul>
-            <div>
-                <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-            </div>
-            <div class="popup-container">
-                <a href="../interfaces/info_adicional3.html">
-                    <button class="mas-info">Ver más</button>
-                </a>
-            </div>      
-        </div>
-    </div>
-
-    <div class="pet-card">
-        <div class="pet-date1">
-            <h5>Perdido desde: 14/10/2023</h5>
-        </div>
-        <div class="pet-image1">
-            <img src="../imagenes/wess.jpg" alt="Mascota perdida 2">
-        </div>
-        <div class="pet-details1">
-            <h3 style="margin-left: 19px; font-size: 20px;">Wess</h3>
-            <i class="fa-solid fa-cat" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-            <ul class="qualities-list1">
-                <li>Castrado</li>
-                <li>Amigable</li>
-            </ul>
-            <div>
-                <h4 style="margin-left: 15px; color: gray; font-weight: bold;">RECOMPENSA</h4>
-            </div>
-            <div class="popup-container">
-                <a href="../interfaces/info_adicional4.html">
-                    <button class="mas-info">Ver más</button>
-                </a>
-            </div>      
-        </div>
-    </div>
     <br><br><br><br>
+
     <div id="chatbot-container">
         <div id="chatbot"><i class="fas fa-paw"></i></div>
         <div class="chat-container">
@@ -153,9 +134,7 @@
             <button id="enviar" onclick="sendMessage()">Enviar</button>
         </div>
     </div>
-       </div>
     <br><br><br><br>
-
 
     <footer>
         <div class="section">
@@ -182,7 +161,7 @@
             <div class="section">
                 <h2>Redes sociales</h2>
                 <div class="social-icons">
-                    <a href="#" target="_blank"><i class="fab fa-facebook " style= "color: #335fff; font-size: 30px; margin-left: 90px;"></i></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook " style= "color: #335fff; font-size: 30px; margin-left: 90px;"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-x-twitter" style="color: black; font-size: 30px; margin-left: 10px;"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-instagram" style="color: #772264; font-size: 30px; margin-left: 10px;"></i></a>
                 </div>
@@ -193,5 +172,4 @@
     <script src="../../backend/chatbot.js"></script>
 
 </body>
-
 </html>

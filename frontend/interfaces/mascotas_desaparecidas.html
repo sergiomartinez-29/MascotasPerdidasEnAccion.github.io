@@ -8,7 +8,97 @@
     <link rel="stylesheet" href="../css/inicio.css">
     <link rel="stylesheet" href="../css/mascotas_desaparecidas.css">
     <script src="https://kit.fontawesome.com/f231ffcfa5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js"></script>
+    <style>
+        .animal-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px;
+            background-color: #f8f9fa;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
 
+        .animal-card {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            width: 300px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff;
+            margin: 20px;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .animal-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .animal-card h3 {
+            margin: 20px 0 10px;
+            font-size: 1.75em;
+            color: #333;
+        }
+
+        .animal-card p {
+            margin: 10px 0;
+            color: #666;
+            font-size: 1em;
+        }
+
+        .recompensa {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1.2em;
+        }
+
+        .ver-mas-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            margin: 20px 0;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .ver-mas-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .contenedor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .buscador {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .campo-buscador {
+            width: 50%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     
@@ -21,14 +111,14 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#" onclick="window.location.href='inicio.html.'; return false;">Inicio</a></li>
+                <li><a href="/frontend/interfaces/inicio.html">Inicio</a></li>
                 <li><a href="#" onclick="window.location.href='perdi_mi_mascota.html'; return false;">Perdí a mi mascota</a></li>
                 <li><a href="#" onclick="window.location.href='mascotas_desaparecidas.html'; return false;">Mascotas desaparecidas</a></li>
                 <li><a href="#" onclick="window.location.href='refugios.html'; return false;">Refugios</a></li>
                 <li>
-                    <a href="#">
+                    <a href="/frontend/interfaces/inicio_sesion.html">
                         <button class="sesion-usuario" type="button">
-                            <i class="fas fa-user"></i> Linet
+                            <i class="fas fa-user"></i> Cerrar Sesion
                         </button>
                     </a>
                 </li>
@@ -42,334 +132,13 @@
         <div class="buscador">
             <br>
             <h2>Ayúdanos a encontrarlos</h2>
-            <input class="campo-buscador" type="text" id="filtro-nombre" placeholder="     Buscar por nombre...">
+            <input class="campo-buscador" type="text" id="filtro-nombre" placeholder="Buscar por nombre...">
             <br><br>
         </div>
-        <div class="pet-card" data-nombre="Hulk">
-            <div class="pet-date1">
-                <h5>Perdido desde: 06/10/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/hulk2.png" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Hulk</h3>
-                <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Amigable</li>
-                    <li>Pequeño</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota1.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>        
-            </div>
-        </div>
-    
-        <div class="pet-card" data-nombre="Body">
-            <div class="pet-date1">
-                <h5>Perdido desde: 10/10/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/body.png" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Body</h3>
-                <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Juguetón</li>
-                    <li>4 años de edad</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: gray; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota2.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>       
-            </div>
-        </div>
-    
-        <div class="pet-card" data-nombre="Billy">
-            <div class="pet-date1">
-                <h5>Perdido desde: 09/09/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/billy.png" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Billy</h3>
-                <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Sin cola</li>
-                    <li>Lesión en el lomo</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota3.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>      
-            </div>
-        </div>
-    
-        <div class="pet-card" data-nombre="Ronie">
-            <div class="pet-date1">
-                <h5>Perdido desde: 25/10/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/ronie.png" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Ronie</h3>
-                <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Noble</li>
-                    <li>Collar verde</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: gray; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota4.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>      
-            </div>
-        </div>
+        
+        <div id="animal-container" class="animal-container"></div>
+        <script src="/backend/mascotasperdidas.js"></script>
 
-        <div class="pet-card" data-nombre="Rocky">
-            <div class="pet-date1">
-                <h5>Perdido desde: 19/10/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/rocky.png" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Rocky</h3>
-                <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Color café y negro</li>
-                    <li>Pastor belga</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota5.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>        
-            </div>
-        </div>
-    
-        <div class="pet-card" data-nombre="Hachi">
-            <div class="pet-date1">
-                <h5>Perdido desde: 26/10/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/hachi.jpg" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Hachi</h3>
-                <i class="fa-solid fa-cat" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Collar azul</li>
-                    <li>Cola esponjada</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota6.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>       
-            </div>
-        </div>
-    
-        <div class="pet-card" data-nombre="Bisteka">
-            <div class="pet-date1">
-                <h5>Perdido desde: 08/09/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/bisteka.png" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Bisteka</h3>
-                <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>8 años de edad</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <br>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota7.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>      
-            </div>
-        </div>
-    
-        <div class="pet-card" data-nombre="Bonita">
-            <div class="pet-date1">
-                <h5>Perdido desde: 24/10/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/bonita.jpg" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Bonita</h3>
-                <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Pechera rosa</li>
-                    <li>Correa colgando</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota8.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>      
-            </div>
-        </div>
-
-        <div class="pet-card" data-nombre="Nina">
-            <div class="pet-date1">
-                <h5>Perdido desde: 14/10/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/nina.png" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Nina</h3>
-                <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Color blanco</li>
-                    <li>Café en el lomo</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota9.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>        
-            </div>
-        </div>
-    
-        <div class="pet-card" data-nombre="Wako">
-            <div class="pet-date1">
-                <h5>Perdido desde: 02/10/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/wako.png" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Wako</h3>
-                <i class="fa-solid fa-dog" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Color blanco</li>
-                    <li>Timido</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: gray; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota10.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>       
-            </div>
-        </div>
-    
-        <div class="pet-card" data-nombre="Miu">
-            <div class="pet-date1">
-                <h5>Perdido desde: 26/09/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/miu.jpg" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Miu</h3>
-                <i class="fa-solid fa-cat" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Pelaje moteado</li>
-                    <li>Ojos color amarillo</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: green; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota11.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>      
-            </div>
-        </div>
-    
-        <div class="pet-card" data-nombre="Sekiro">
-            <div class="pet-date1">
-                <h5>Perdido desde: 20/09/2023</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/sekiro.jpg" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Sekiro</h3>
-                <i class="fa-solid fa-cat" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Atigrado</li>
-                    <li>Mancha en nariz</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: gray; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota12.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>      
-            </div>
-        </div>
-
-        <div class="pet-card" data-nombre="Sekiro">
-            <div class="pet-date1">
-                <h5>Perdido desde: 5/18/2024</h5>
-            </div>
-            <div class="pet-image1">
-                <img src="../imagenes/rayas.jpg" alt="Mascota perdida 2">
-            </div>
-            <div class="pet-details1">
-                <h3 style="margin-left: 19px; font-size: 20px;">Rayas</h3>
-                <i class="fa-solid fa-cat" style="color: #ff7b00; font-size: 50px; margin-left: 180px;"></i>
-                <ul class="qualities-list1">
-                    <li>Amigable</li>
-                    <li>Rayas grises y negras</li>
-                </ul>
-                <div>
-                    <h4 style="margin-left: 15px; color: gray; font-weight: bold;">RECOMPENSA</h4>
-                </div>
-                <div class="popup-container">
-                    <a href="../../frontend/interfaces/mascotas_desaparecidas/mascota12 - copia.html">
-                        <button class="mas-info">Ver más</button>
-                    </a>
-                </div>      
-            </div>
-        </div>
     </div>
-    <script src="../../backend/buscador.js"></script>
 </body>
 </html>

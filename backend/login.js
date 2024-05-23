@@ -25,6 +25,7 @@ loginForm.addEventListener('submit', async (event) => {
     } else {
         messageDiv.textContent = 'Inicio de sesión exitoso.';
         messageDiv.style.color = 'green';
+        localStorage.setItem('userEmail', email);  // Guarda el correo en localStorage
         window.location.href = 'inicio.html';
     }
     loginForm.appendChild(messageDiv);

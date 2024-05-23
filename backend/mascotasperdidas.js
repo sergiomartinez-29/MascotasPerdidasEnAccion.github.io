@@ -5,13 +5,14 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const { createClient } = supabase;
 const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+let allAnimals = [];
+
 // Fetch animals from Supabase
 async function fetchAnimals() {
     try {
         const { data, error } = await supabaseClient
             .from('animals')
             .select('*')
-            .limit(4);
 
         if (error) throw error;
 
@@ -20,6 +21,7 @@ async function fetchAnimals() {
             return;
         }
 
+        allAnimals = data;
         displayAnimals(data);
     } catch (error) {
         console.error('Error fetching animals:', error);
@@ -50,6 +52,19 @@ function displayAnimals(animals) {
         container.appendChild(card);
     });
 }
+
+// Filter animals by name
+function filterAnimalsByName(name) {
+    const filteredAnimals = allAnimals.filter(animal =>
+        animal.name.toLowerCase().includes(name.toLowerCase())
+    );
+    displayAnimals(filteredAnimals);
+}
+
+// Event listener for the search input
+document.getElementById('filtro-nombre').addEventListener('input', (event) => {
+    filterAnimalsByName(event.target.value);
+});
 
 // Load animals when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', fetchAnimals);
