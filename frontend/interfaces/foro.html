@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
 
-
     <link rel="stylesheet" href="../css/foro.css">
     <script src="https://kit.fontawesome.com/f231ffcfa5.js" crossorigin="anonymous"></script>
     <!-- Agrega esto en la sección head de tu HTML -->
@@ -13,6 +12,20 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js"></script>
     
+    <style>
+        /* Agrega este estilo para que el banner de publicidad se vea conforme se baja la pantalla */
+        #ad-banner {
+            position: fixed;
+            bottom: 20px;
+            right: 300px;
+            width: 300px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            padding: 10px;
+            border-top-left-radius: 10px;
+        }
+    </style>
 </head>
 <body>
     
@@ -36,7 +49,6 @@
                         </button>
                     </a>
                 </li>
-                
             </ul>
         </nav>
     </header>
@@ -50,14 +62,15 @@
         </form>
         <div id="comments-container"></div>
     </div>
-    <!--div style="position:static;" id="ad-banner">
 
+    <div id="ad-banner">
         <img src="../imagenes/adopcion2.png" alt="Banner de publicidad">
         <p style="font-size: 20px; margin-left: 10px; margin-right: 10px; color: black;">Un animalito rehabilitado necesita de un espacio, ambiente y cuidados especiales. Debe tratarse como a un nuevo integrante de la familia.</p>
         <br><br>
         <p style="font-size: 20px; color: black;"><i style="color: blue; font-size: 20px;" class="fa-brands fa-facebook"></i> ADOPTA MONTERREY</p>
         <p style="font-size: 20px; color: black;"><i style="color: rgb(194, 71, 194); font-size: 20px" class="fa-brands fa-instagram"></i> @adopta_monterrey</p>
-    </div-->
+    </div>
+    
     <br><br>
 
     <script src="../../backend/foro.js"></script>
@@ -65,5 +78,3 @@
 </body>
 
 </html>
-
-
