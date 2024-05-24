@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles del Animal</title>
     <link rel="stylesheet" href="../css/info_adicional1.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://kit.fontawesome.com/f231ffcfa5.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js"></script>
     <script src="/backend/detallesmascotas.js"></script>
+    <style>
+        .info-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+        }
+        #map { 
+            height: 400px; 
+            width: 400px;
+            border-radius: 10px;
+        }
+        .map-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+    </style>
 </head>
 <body>
     <header>
@@ -51,8 +70,15 @@
             <h4 id="animal-reward">Recompensa: $0.00</h4>
             <p id="animal-owner">Dueño: Nombre del Dueño</p>
         </div>
+        <!-- Contenedor para el mapa -->
+        <div class="map-container">
+            <h3>Área de extravío</h3>
+            <div id="map"></div>
+        </div>
     </div>
     
+    <script src="https://unpkg.com/leaflet"></script>
+        
     <br><br>
 </body>
 </html>

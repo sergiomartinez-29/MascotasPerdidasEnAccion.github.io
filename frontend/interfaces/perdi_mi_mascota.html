@@ -7,12 +7,13 @@
 
     <link rel="stylesheet" href="../css/forms.css">
     <link rel="stylesheet" href="../css/perdi_mi_mascota.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://kit.fontawesome.com/f231ffcfa5.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.js"></script>
     <script src="/backend/perdimascota.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; /*#f4f4f9;*/
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
@@ -111,6 +112,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
+            max-width: 400px;
         }
 
         .continuar {
@@ -153,6 +155,11 @@
             margin: 0 10px;
             color: white;
             font-size: 30px;
+        }
+
+        #map { 
+            height: 450px; 
+            width: 450px;
         }
 
         @media (max-width: 768px) {
@@ -232,12 +239,38 @@
                         <label for="color">Color</label>
                         <input type="text" id="color" name="color" required>
                     </div>
+                    <div id="map"></div>
+                    <!-- Campo de texto para almacenar las coordenadas -->
+                    <div class="form-group">
+                        <label for="coordinates">Marca en el mapa el área donde se perdió la mascota</label>
+                        <input type="text" id="coordinates" name="coordinates" readonly>
+                    </div>
                     
                 </div>
                 <div class="continuar">
                     <button type="submit">Registrar</button>
                 </div>
             </form>
+            <script src="https://unpkg.com/leaflet"></script>
+            <script>
+                function initMap() {
+                    var initialCoords = [25.67866203603157, -100.31341552734376]; // Coordenadas iniciales (Nueva York)
+                    var map = L.map('map').setView(initialCoords, 10); // Crear mapa
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    // Evento click sobre el mapa
+                    map.on('click', function(event) {
+                        var clickedCoords = event.latlng; // Obtener coordenadas del clic
+                        document.getElementById('coordinates').value = clickedCoords.lat + ", " + clickedCoords.lng; // Mostrar coordenadas en el campo de texto
+                    });
+                }
+
+                // Inicializar el mapa al cargar la página
+                initMap();
+            </script>
             <script src="/backend/perdimascota.js"></script>
         </div>
     </div>

@@ -39,4 +39,21 @@ function displayAnimalDetails(animal) {
     document.getElementById('animal-temper').textContent = `Temperamento: ${animal.temper}`;
     document.getElementById('animal-reward').textContent = `Recompensa: $${animal.reward.toFixed(2)}`;
     document.getElementById('animal-owner').textContent = `Dueño: ${animal.owner}`;
+
+    const coords = animal.lastlocation.split(',').map(coord => parseFloat(coord.trim()));
+    if (coords.length === 2) {
+        initMap(coords[0], coords[1]);
+    }
+}
+
+function initMap(lat, lng) {
+    var map = L.map('map').setView([lat, lng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([lat, lng]).addTo(map)
+        .bindPopup('Última ubicación conocida')
+        .openPopup();
 }

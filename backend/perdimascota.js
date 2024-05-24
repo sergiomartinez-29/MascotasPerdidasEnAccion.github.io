@@ -14,7 +14,8 @@ document.getElementById('pet-form').addEventListener('submit', async function(ev
         reward: parseFloat(form.reward.value),
         temper: form.temper.value,
         color: form.color.value,
-        owner: userEmail  // Incluye el correo del usuario
+        owner: userEmail,  // Incluye el correo del usuario
+        lastlocation: form.coordinates.value,
     };
 
     try {
