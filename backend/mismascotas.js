@@ -35,6 +35,22 @@ async function fetchAnimals() {
     }
 }
 
+// Delete animal from Supabase
+async function deleteAnimal(animalId) {
+    try {
+        const { error } = await supabaseClient
+            .from('animals')
+            .delete()
+            .eq('id', animalId);
+
+        if (error) throw error;
+
+        console.log('Animal deleted successfully');
+    } catch (error) {
+        console.error('Error deleting animal:', error);
+    }
+}
+
 // Display animals on the page
 function displayAnimals(animals) {
     const container = document.getElementById('animal-container');
@@ -54,6 +70,7 @@ function displayAnimals(animals) {
             <p>Tamaño: ${animal.size}</p>
             <p class="recompensa">Recompensa: $${animal.reward.toFixed(2)}</p>
             <button class="ver-mas-btn" data-id="${animal.id}">Ver más</button>
+            <button class="encontrado-btn" data-id="${animal.id}">Encontrado!</button>
         `;
 
         container.appendChild(card);
@@ -67,6 +84,21 @@ function displayAnimals(animals) {
             window.location.href = `info_adicional1.html?id=${animalId}`;
         });
     });
+
+    const deleteButtons = document.querySelectorAll('.encontrado-btn');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const animalId = button.getAttribute('data-id');
+                deleteAnimal(animalId)
+                    .then(() => {
+                        // Recarga la página
+                        window.location.reload();
+                        // Muestra el mensaje de alerta
+                        alert('¡Felicidades por encontrar a tu mascota!');
+                    })
+                    .catch(error => console.error(error));
+            });
+        });
 }
 
 // Filter animals by name
