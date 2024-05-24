@@ -16,6 +16,7 @@ document.getElementById('comment-form').addEventListener('submit', async functio
             text: commentText,
             likes: 0,
             timestamp: new Date().toISOString(),
+            user: userEmail
         };
 
         const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
@@ -58,8 +59,8 @@ async function fetchComments() {
             const commentDiv = document.createElement('div');
             commentDiv.classList.add('comment');
 
-            const commentEmail = document.createElement('h4');
-            commentEmail.textContent = userEmail;
+            const commentUser = document.createElement('h4');
+            commentUser.textContent = comment.user;
 
             const commentText = document.createElement('p');
             commentText.textContent = comment.text;
@@ -77,7 +78,8 @@ async function fetchComments() {
             likeBtn.onclick = () => likeComment(comment.id, comment.likes);
 
             commentActions.appendChild(likeBtn);
-            commentDiv.appendChild(commentEmail);
+
+            commentDiv.appendChild(commentUser);
             commentDiv.appendChild(commentText);
             commentDiv.appendChild(commentTimestamp);
             commentDiv.appendChild(commentActions);
