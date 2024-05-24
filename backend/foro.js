@@ -2,6 +2,9 @@ const SUPABASE_URL = 'https://shxefkrehmfropbodffn.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNoeGVma3JlaG1mcm9wYm9kZmZuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTY0MTEzNjMsImV4cCI6MjAzMTk4NzM2M30.Lh9a-T6_mPm52FMUszNM1jROfBhRO2wXX6xpNkrto6Y';
 const SUPABASE_TABLE = 'comments';
 
+CommentIsLiked = [];
+const userEmail = localStorage.getItem('userEmail');
+
 document.getElementById('comment-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
@@ -37,7 +40,7 @@ document.getElementById('comment-form').addEventListener('submit', async functio
 });
 
 async function fetchComments() {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?select=*`, {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?select=*&order=id.asc`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -55,6 +58,9 @@ async function fetchComments() {
             const commentDiv = document.createElement('div');
             commentDiv.classList.add('comment');
 
+            const commentEmail = document.createElement('h4');
+            commentEmail.textContent = userEmail;
+
             const commentText = document.createElement('p');
             commentText.textContent = comment.text;
 
@@ -71,7 +77,7 @@ async function fetchComments() {
             likeBtn.onclick = () => likeComment(comment.id, comment.likes);
 
             commentActions.appendChild(likeBtn);
-
+            commentDiv.appendChild(commentEmail);
             commentDiv.appendChild(commentText);
             commentDiv.appendChild(commentTimestamp);
             commentDiv.appendChild(commentActions);
@@ -84,7 +90,7 @@ async function fetchComments() {
 }
 
 async function likeComment(commentId, currentLikes) {
-    const updatedLikes = currentLikes + 1;
+    const updatedLikes = CommentIsLiked[commentId] ? currentLikes - 1 : currentLikes + 1;
 
     const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?id=eq.${commentId}`, {
         method: 'PATCH',
@@ -100,6 +106,12 @@ async function likeComment(commentId, currentLikes) {
         fetchComments(); // Actualiza la lista de comentarios después de actualizar los likes
     } else {
         console.error('Error al actualizar likes:', await response.json());
+    }
+
+    if(CommentIsLiked[commentId]){
+        CommentIsLiked[commentId]=false;
+    } else{
+        CommentIsLiked[commentId]=true;
     }
 }
 
