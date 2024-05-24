@@ -41,7 +41,7 @@ document.getElementById('comment-form').addEventListener('submit', async functio
 });
 
 async function fetchComments() {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?select=*&order=id.asc`, {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?select=*&order=id.desc`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
