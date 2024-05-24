@@ -13,7 +13,7 @@
     <script src="/backend/perdimascota.js"></script>
     <style>
         body {
-            font-family: Arial, sans-serif; /*#f4f4f9;*/
+            font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
@@ -73,7 +73,7 @@
             background-color: white;
             padding: 30px;
             margin: 20px auto;
-            max-width: 900px;
+            max-width: 1200px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
@@ -115,20 +115,43 @@
             max-width: 400px;
         }
 
+        .map-group {
+            flex: 1 1 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .map-group label {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        #map { 
+            height: 450px; 
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+
         .continuar {
             text-align: center;
             margin-top: 20px;
+            justify-content: space-around;
         }
 
         .continuar button {
             background-color: #ff6f61;
             color: white;
             border: none;
-            padding: 15px 30px;
+            /**/padding: 15px 30px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
             font-weight: bold;
+            /**/justify-content: center;
         }
 
         footer {
@@ -157,13 +180,12 @@
             font-size: 30px;
         }
 
-        #map { 
-            height: 450px; 
-            width: 450px;
-        }
-
         @media (max-width: 768px) {
             .form-group {
+                flex: 1 1 100%;
+            }
+
+            .map-group {
                 flex: 1 1 100%;
             }
         }
@@ -239,14 +261,13 @@
                         <label for="color">Color</label>
                         <input type="text" id="color" name="color" required>
                     </div>
-                    <div id="map"></div>
-                    <!-- Campo de texto para almacenar las coordenadas -->
-                    <div class="form-group">
+                    <div class="map-group">
                         <label for="coordinates">Marca en el mapa el área donde se perdió la mascota</label>
+                        <div id="map"></div>
                         <input type="text" id="coordinates" name="coordinates" readonly>
                     </div>
-                    
                 </div>
+                
                 <div class="continuar">
                     <button type="submit">Registrar</button>
                 </div>
